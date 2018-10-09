@@ -1,0 +1,20 @@
+char letters[] = "abcdefghijklmnopqrstuvwxyz";
+int r=rand()%26,k;
+string s;
+cin>>k; //length of the string
+
+for(int i=0; i<k; i++)
+    {
+
+
+
+        while(letters[r]=='$')
+        {
+            r=rand()%26;
+
+        }
+        cout << letters[r];
+        s+=letters[r];
+        letters[r]='$';
+
+    }
