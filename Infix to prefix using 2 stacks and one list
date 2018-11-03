@@ -1,0 +1,58 @@
+from pythonds.basic.stack import Stack
+
+def infixToPreFix(infixExpr):
+    opStack = Stack()
+    varStack = Stack()
+    result = []
+
+    prec = {}
+    prec["^"] = 4
+    prec["*"] = 3
+    prec["/"] = 3
+    prec["+"] = 2
+    prec["-"] = 2
+    prec[")"] = 1
+
+
+
+    tokenList = infixExpr.split()
+    tokenList = tokenList[::-1]
+
+    for token in tokenList:
+        if token in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" or token in "0123456789":
+            varStack.push(token)
+        elif token == ')':
+            opStack.push(token)
+        elif token == '(':
+            topToken = opStack.pop()
+            while topToken != ')':
+                varStack.push(topToken)
+                topToken = opStack.pop()
+        else:
+            while (not opStack.isEmpty()) and (prec[opStack.peek()] > prec[token]):
+                varStack.push(opStack.pop())
+            opStack.push(token)
+
+    while not varStack.isEmpty():
+        opStack.push(varStack.pop())
+    # print (opStack.peek())
+
+    while not opStack.isEmpty():
+        result.append(opStack.pop())
+
+    return " ".join(result[::-1])
+
+
+print(infixToPreFix("( ( A - B ) + C * ( D + E ) ) - ( F + G ) "))
+
+
+
+
+
+
+
+
+
+
+
+
