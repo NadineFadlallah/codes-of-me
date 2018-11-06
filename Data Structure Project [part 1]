@@ -74,7 +74,7 @@ def infixToPreFix(infixExpr): # convert an infix expression to a prefix expressi
 
 Expression = list(input('Enter the Infix Expression: '))
 
-print (infixToPreFix(Expression))
+print ("The prefix Expression: " + infixToPreFix(Expression))
 
 
 
