@@ -43,9 +43,9 @@ def infixToPreFix(infixExpr): # convert an infix expression to a prefix expressi
 
         else: # if token is an operator
 
-            while (not opStack.isEmpty()) and (prec[opStack.peek()] > prec[token]): # if the operator stack isn't empty,
+            while (not opStack.isEmpty()) and (prec[opStack.peek()] >= prec[token]): # if the operator stack isn't empty,
                                                                                     # then compare the priorities.
-                                                                                    # if the current operator/token is lower, then pop the higher operator and 2 variables from the variable stack
+                                                                                    # if the current operator/token is lower or equal, then pop the higher operator and 2 variables from the variable stack
                 # the prefix converting process
                 operand1 = varStack.pop()
                 operand2 = varStack.pop()
