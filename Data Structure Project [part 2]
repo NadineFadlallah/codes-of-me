@@ -1,0 +1,50 @@
+from pythonds.basic.stack import Stack
+
+
+def doMath(op, op1, op2): # function for doing mathematical operations, takes three parameters: the operator and two operands
+
+    if op == "*":
+        return op1 * op2
+    elif op == "/":
+        return op1 / op2
+    elif op == "+":
+        return op1 + op2
+    elif op == "-":
+        return op1 - op2 
+    else:
+        return op1 ** op2
+
+
+def evalPrefix(preExp): # function for evaluating prefix expressions
+                        #e.g: + 1 5 = 6
+
+    tokenList = preExp.split()
+
+    tokenList = tokenList[::-1] # to start with the operands first
+
+    operandStack = Stack() # stack for the operands
+
+
+    for token in tokenList:
+        
+        if token in "0123456789": # if token is a digit, then push it to the operand stack
+
+            operandStack.push(int(token))
+
+
+        else: # if token an operator, do the math
+
+            operand1 = operandStack.pop() #1st operand
+
+            operand2 = operandStack.pop() #2nd operand
+
+            result = doMath(token, operand1, operand2)
+
+            operandStack.push(result)
+
+    return operandStack.pop() # the output result
+
+            
+Expression = input('Enter the Prefix Expression: ')
+
+print("Result = " + str ( evalPrefix(Expression)))
