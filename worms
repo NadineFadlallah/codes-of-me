@@ -1,0 +1,38 @@
+n = int(input())
+w = list(map(int,input().split()))
+l = []
+m=int(input())
+j = list(map(int,input().split()))
+c=w[0]
+l.append(c)
+r=[]
+
+for k in range(1,n):
+    c+=w[k]
+    l.append(c)
+
+
+
+for i in j:
+    first = 0
+    last = len(l)-1
+
+    while first<=last:
+        mid = (first+last)//2
+
+
+        #if i in range(l[mid]-w[w.index(l[mid])]-1,l[mid])
+        if l[mid]-i >= 0 and l[mid]-i < w[mid]:
+            r.append(w.index(w[mid])+1)
+            #print(w.index(w[mid])+1)
+            break
+
+
+        else:
+            if(l[mid]-i) >= w[mid]:
+                last = mid-1
+            else:
+                first = mid+1
+
+for i in r:
+    print(i)
