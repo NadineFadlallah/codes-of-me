@@ -23,7 +23,7 @@ for i in j:
 
         #if i in range(l[mid]-w[w.index(l[mid])]-1,l[mid])
         if l[mid]-i >= 0 and l[mid]-i < w[mid]:
-            r.append(w.index(w[mid])+1)
+            r.append(mid+1)
             #print(w.index(w[mid])+1)
             break
 
